@@ -9,6 +9,7 @@ local renderer = nui.create_renderer({
 		row = "0%",
 		col = "100%",
 	},
+	border_style = "rouned",
 })
 
 function display:new(obj)
