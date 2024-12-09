@@ -4,18 +4,15 @@ local nodes = require("nvim-ducky.nodes")
 local node = require("nvim-ducky.node")
 
 local renderer = nui.create_renderer({
-	width = 10,
+	width = 20,
 	height = 20,
+	position = "100%",
 })
 
 function display:new(obj)
 	print(table.unpack(nodes:render(obj.focus_node)))
 	local body = function()
-		return nui.columns(nui.rows(nui.paragraph({
-			lines = obj.focus_node.name,
-			align = "center",
-			is_focusable = false,
-		})))
+		return nui.columns(table.unpack(node:render(obj.focus_node)))
 	end
 
 	renderer:render(body)
