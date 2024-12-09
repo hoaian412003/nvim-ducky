@@ -11,7 +11,7 @@ local renderer = nui.create_renderer({
 function display:new(obj)
 	print(table.unpack(nodes:render(obj.focus_node)))
 	local body = function()
-		return nui.columns(nui.rows(n.paragraph({
+		return nui.columns(nui.rows(nui.paragraph({
 			lines = obj.focus_node.name,
 			align = "center",
 			is_focusable = false,
