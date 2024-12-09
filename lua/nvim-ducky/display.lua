@@ -1,12 +1,14 @@
 local display = {}
 local nui = require("nui-components")
 local nodes = require("nvim-ducky.nodes")
-local node = require("nvim-ducky.node")
 
 local renderer = nui.create_renderer({
 	width = 20,
 	height = 20,
-	position = "100%",
+	position = {
+		rows = "100%",
+		columns = "0%",
+	},
 })
 
 function display:new(obj)
@@ -16,6 +18,8 @@ function display:new(obj)
 	end
 
 	renderer:render(body)
+	obj.ui = renderer
+	renderer:focus()
 	return obj
 end
 
