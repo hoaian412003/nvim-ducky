@@ -9,7 +9,7 @@ local renderer = nui.create_renderer({
 
 function display:new(obj)
 	-- local body = nui.columns(table.unpack(nodes.render(obj.focus_node)))
-	vim.print(table.unpack(nodes.render(obj.focus_node)))
+	vim.print(nodes.render(obj.focus_node))
 
 	-- renderer:render(body)
 	return obj
