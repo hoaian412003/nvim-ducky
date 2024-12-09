@@ -6,8 +6,8 @@ local renderer = nui.create_renderer({
 	width = 20,
 	height = 20,
 	position = {
-		rows = "100%",
-		columns = "0%",
+		row = "100%",
+		col = "0%",
 	},
 })
 
