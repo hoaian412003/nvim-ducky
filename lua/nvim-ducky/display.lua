@@ -10,6 +10,7 @@ local renderer = nui.create_renderer({
 function display:new(obj)
 	-- vim.print("Node Array", nodes:render(obj.focus_node))
 	vim.print(unpack(nodes:render(obj.focus_node)), "---> Node list")
+	vim.print(nodes:render(obj.focus_node), "---> Node table")
 	-- local body = nui.columns(unpack(nodes:render(obj.focus_node)))
 	-- vim.print(obj.focus_node)
 
