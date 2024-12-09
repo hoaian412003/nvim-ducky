@@ -1,6 +1,6 @@
 local Utils = {}
 
-Utils.get_symbols = function()
+function Utils.get_symbols()
 	return vim.lsp.buf.document_symbol()
 end
 
