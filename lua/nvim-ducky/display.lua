@@ -8,6 +8,7 @@ local renderer = nui.create_renderer({
 })
 
 function display:new(obj)
+	print(table.unpack(nodes:render(obj.focus_node)))
 	local body = function()
 		return nui.columns(table.unpack(nodes:render(obj.focus_node)))
 	end
