@@ -3,7 +3,7 @@ local nodes = {}
 
 function nodes:render(current_node)
 	local result = {}
-	local index = 0
+	local index = 1
 	while current_node ~= nil do
 		result[index] = node:render(current_node)
 		current_node = current_node.next
