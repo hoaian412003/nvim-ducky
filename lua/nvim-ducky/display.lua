@@ -12,7 +12,7 @@ function display:new(obj)
 	vim.print(table.unpack(nodes.renderer(obj.focus_node)))
 
 	-- renderer:render(body)
-	return renderer
+	return obj
 end
 
 return display
