@@ -9,7 +9,7 @@ local renderer = n.create_renderer({
 function display:new(obj)
 	vim.print(obj.focus_node)
 
-	renderer:renderer(n.paragraph({
+	renderer:render(n.paragraph({
 		lines = "nui.components",
 		align = "center",
 		is_focusable = false,
