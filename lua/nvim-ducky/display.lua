@@ -9,7 +9,7 @@ local renderer = nui.create_renderer({
 
 function display:new(obj)
 	local body = function()
-		nui.columns(table.unpack(nodes:render(obj.focus_node)))
+		return nui.columns(table.unpack(nodes:render(obj.focus_node)))
 	end
 
 	renderer:render(body)
