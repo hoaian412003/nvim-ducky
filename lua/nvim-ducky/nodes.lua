@@ -3,9 +3,11 @@ local nodes = {}
 
 function nodes:render(current_node)
 	local result = {}
+	local index = 0
 	while current_node ~= nil do
-		result[tonumber(current_node.index)] = node:render(current_node)
+		result[index] = node:render(current_node)
 		current_node = current_node.next
+		index = index + 1
 	end
 
 	return result
