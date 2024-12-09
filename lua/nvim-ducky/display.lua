@@ -8,8 +8,8 @@ local renderer = nui.create_renderer({
 })
 
 function display:new(obj)
-	vim.print(nodes:render(obj.focus_node))
-	vim.print(table.unpack(nodes:render(obj.focus_node)))
+	-- vim.print("Node Array", nodes:render(obj.focus_node))
+	vim.print("Node List", unpack(nodes:render(obj.focus_node)))
 	local body = nui.columns(table.unpack(nodes:render(obj.focus_node)))
 	-- vim.print(obj.focus_node)
 
