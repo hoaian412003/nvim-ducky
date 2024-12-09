@@ -6,4 +6,6 @@ function M.health_check()
 	end
 end
 
+M.utils = require("nvim-ducky.utils")
+
 return M
