@@ -25,10 +25,10 @@ function display:new(obj)
 		win_options = {
 			winhighlight = "Normal:NavbuddyNormalFloat,FloatBorder:NavbuddyFloatBorder",
 			scrolloff = obj.config.window.scrolloff,
+			cursorline = true,
 		},
 		buf_options = {
 			modifiable = false,
-			cursorline = true,
 		},
 	})
 
