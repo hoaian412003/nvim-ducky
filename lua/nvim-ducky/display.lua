@@ -32,22 +32,31 @@ function display:new(obj)
 
 	obj.popup = popup
 
+	display:fill_buffer(popup.bufnr, obj.focus_node, obj.config)
+
 	popup:mount()
 	popup:on(event.BufLeave, function()
 		popup:unmount()
 	end)
 
-	local nodes = utils.get_node_list(obj.focus_node)
-
-	for k, v in pairs(nodes) do
-		vim.api.nvim_buf_set_option(popup.bufnr, "modifiable", true)
-		vim.api.nvim_buf_set_lines(popup.bufnr, k - 1, k, false, { obj.config.icons[v.kind] .. v.name })
-		vim.api.nvim_buf_set_option(popup.bufnr, "modifiable", false)
-	end
-
 	vim.api.nvim_buf_set_option(popup.bufnr, "winhighlight", "CursorLine:BufferLinePickSelected")
 
 	return obj
+end
+
+function display:fill_buffer(buffer, current_node, config)
+	local nodes = utils.get_node_list(current_node)
+
+	local lines = {}
+	for _, node in ipairs(nodes) do
+		local text = " " .. config.icons[node.kind] .. node.name
+		table.insert(lines, text)
+	end
+
+	-- Write list of symbols to buffer
+	vim.api.nvim_buf_set_option(buffer.bufnr, "modifiable", true)
+	vim.api.nvim_buf_set_lines(buffer.bufnr, 0, -1, false, lines)
+	vim.api.nvim_buf_set_option(buffer.bufnr, "modifiable", false)
 end
 
 return display
