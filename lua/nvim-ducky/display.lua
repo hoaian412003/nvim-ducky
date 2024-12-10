@@ -4,6 +4,7 @@ local event = require("nui.utils.autocmd").event
 local utils = require("nvim-ducky.utils")
 local ui = require("nvim-ducky.ui")
 local ns = vim.api.nvim_create_namespace("nvim-ducky")
+local navic = require("nvim-navic")
 
 function display:new(obj)
 	ui.highlight_setup(obj.config)
@@ -51,6 +52,11 @@ function display:fill_buffer(buffer, current_node, config)
 	for _, node in ipairs(nodes) do
 		local text = " " .. config.icons[node.kind] .. node.name
 		table.insert(lines, text)
+	end
+
+	for k, node in pairs(nodes) do
+		local hl_group = navic.adapt_lsp_num_to_str(node.kind)
+		vim.api.nvim_buf_add_highlight(buffer, ns, hl_group, k - 1, 0, -1)
 	end
 
 	-- Write list of symbols to buffer
