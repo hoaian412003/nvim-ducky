@@ -1,8 +1,18 @@
-local Utils = {}
+local utils = {}
 
 -- lua print(require('nvim-ducky').utils.get_symbols())
-function Utils.get_symbols()
+function utils.get_symbols()
 	return vim.lsp.buf.document_symbol()
 end
 
-return Utils
+function utils.get_node_list(current_node)
+	local index = 1
+	local result = {}
+	while current_node ~= nil do
+		result[index] = current_node
+		index = index + 1
+	end
+	return result
+end
+
+return utils
