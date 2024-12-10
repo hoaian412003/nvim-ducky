@@ -4,7 +4,7 @@ local event = require("nui.utils.autocmd").event
 local utils = require("nvim-ducky.utils")
 local ui = require("nvim-ducky.ui")
 local ns = vim.api.nvim_create_namespace("nvim-ducky")
-local navic = require("nvim-navic")
+local navic = require("nvim-navic.lib")
 
 function display:new(obj)
 	ui.highlight_setup(obj.config)
