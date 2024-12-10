@@ -50,8 +50,6 @@ function display:fill_buffer(buffer, current_node, config)
 
 	local lines = {}
 	for _, node in ipairs(nodes) do
-		vim.print("Print node" .. node.name)
-
 		local text = " " .. config.icons[node.kind] .. node.name
 		table.insert(lines, text)
 	end
