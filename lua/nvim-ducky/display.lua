@@ -10,7 +10,7 @@ function display:new(obj)
 	ui.highlight_setup(obj.config)
 
 	local popup = Popup({
-		enter = true,
+		enter = false,
 		focusable = true,
 		border = {
 			style = "rounded",
