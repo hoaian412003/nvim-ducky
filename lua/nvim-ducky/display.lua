@@ -18,6 +18,7 @@ function display:new(obj)
 			width = "20%",
 			height = "50%",
 		},
+		highlight = "Normal:Normal",
 	})
 
 	obj.popup = popup
