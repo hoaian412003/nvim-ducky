@@ -1,6 +1,7 @@
 local navic = require("nvim-navic.lib")
 
 local display = require("nvim-ducky.display")
+local session = {}
 
 local config = {
 	window = {
@@ -139,14 +140,18 @@ local function handler(bufnr, curr_node, lsp_name)
 		end
 	end
 
-	display:new({
-		for_buf = bufnr,
-		for_win = vim.api.nvim_get_current_win(),
-		start_cursor = vim.api.nvim_win_get_cursor(vim.api.nvim_get_current_win()),
-		focus_node = curr_node,
-		config = config,
-		lsp_name = lsp_name,
-	})
+	if session.popup ~= nil then
+		session = display:new({
+			for_buf = bufnr,
+			for_win = vim.api.nvim_get_current_win(),
+			start_cursor = vim.api.nvim_win_get_cursor(vim.api.nvim_get_current_win()),
+			focus_node = curr_node,
+			config = config,
+			lsp_name = lsp_name,
+		})
+	else
+		display:refresh(curr_node)
+	end
 end
 
 -- @Public Methods
