@@ -3,6 +3,7 @@ local Popup = require("nui.popup")
 local event = require("nui.utils.autocmd").event
 local utils = require("nvim-ducky.utils")
 local ui = require("nvim-ducky.ui")
+local ns = vim.api.nvim_create_namespace("nvim-ducky")
 
 function display:new(obj)
 	ui.highlight_setup(obj.config)
@@ -39,8 +40,6 @@ function display:new(obj)
 		popup:unmount()
 	end)
 
-	vim.api.nvim_buf_set_option(popup.bufnr, "winhighlight", "CursorLine:BufferLinePickSelected")
-
 	return obj
 end
 
@@ -57,6 +56,12 @@ function display:fill_buffer(buffer, current_node, config)
 	vim.api.nvim_buf_set_option(buffer, "modifiable", true)
 	vim.api.nvim_buf_set_lines(buffer, 0, -1, false, lines)
 	vim.api.nvim_buf_set_option(buffer, "modifiable", false)
+
+	display:highlight_current_line(buffer, 1)
+end
+
+function display:highlight_current_line(buffer, line)
+	vim.api.nvim_buf_add_highlight(buffer, ns, "CursorLine", line, 0, -1)
 end
 
 return display
