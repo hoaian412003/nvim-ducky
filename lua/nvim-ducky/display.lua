@@ -47,6 +47,7 @@ end
 
 function display:fill_buffer(buffer, current_node, config)
 	local nodes = utils.get_node_list(current_node)
+	vim.g.print("nodes is: ", nodes)
 
 	local lines = {}
 	for _, node in ipairs(nodes) do
