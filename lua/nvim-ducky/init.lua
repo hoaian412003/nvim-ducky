@@ -166,7 +166,9 @@ function M.open(bufnr)
 	vim.api.nvim_create_autocmd("CursorMoved", {
 		group = augroup,
 		buffer = bufnr,
-		callback = handler,
+		callback = function()
+			request(bufnr, handler)
+		end,
 	})
 end
 
