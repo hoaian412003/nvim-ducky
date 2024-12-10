@@ -139,7 +139,6 @@ local function handler(bufnr, curr_node, lsp_name)
 		end
 	end
 
-	-- if display.popup == nil then
 	display:new({
 		for_buf = bufnr,
 		for_win = vim.api.nvim_get_current_win(),
@@ -148,9 +147,6 @@ local function handler(bufnr, curr_node, lsp_name)
 		config = config,
 		lsp_name = lsp_name,
 	})
-	-- else
-	-- 	display:refesh(curr_node)
-	-- end
 end
 
 -- @Public Methods
@@ -318,3 +314,5 @@ function M.setup(user_config)
 		end
 	end
 end
+
+return M
