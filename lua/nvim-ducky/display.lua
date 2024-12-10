@@ -31,6 +31,7 @@ function display:new(obj)
 		buf_options = {
 			modifiable = false,
 		},
+		relative = "editor",
 	})
 
 	display:fill_buffer(popup.bufnr, obj.focus_node, obj.config)

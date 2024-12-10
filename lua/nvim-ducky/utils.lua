@@ -9,6 +9,7 @@ function utils.get_node_list(current_node)
 	if current_node == nil then
 		return {}
 	end
+	vim.print(utils.get_node_next(current_node.next))
 
 	return { unpack(utils.get_node_pre(current_node.prev)), current_node, utils.get_node_next(current_node.next) }
 end
