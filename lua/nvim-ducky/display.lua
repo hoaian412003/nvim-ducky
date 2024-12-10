@@ -54,9 +54,9 @@ function display:fill_buffer(buffer, current_node, config)
 	end
 
 	-- Write list of symbols to buffer
-	vim.api.nvim_buf_set_option(buffer.bufnr, "modifiable", true)
-	vim.api.nvim_buf_set_lines(buffer.bufnr, 0, -1, false, lines)
-	vim.api.nvim_buf_set_option(buffer.bufnr, "modifiable", false)
+	vim.api.nvim_buf_set_option(buffer, "modifiable", true)
+	vim.api.nvim_buf_set_lines(buffer, 0, -1, false, lines)
+	vim.api.nvim_buf_set_option(buffer, "modifiable", false)
 end
 
 return display
