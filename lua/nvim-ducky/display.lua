@@ -56,6 +56,7 @@ function display:fill_buffer(buffer, current_node, config)
 
 	for k, node in pairs(nodes) do
 		local hl_group = navic.adapt_lsp_num_to_str(node.kind)
+		vim.print("Highlight: ", hl_group)
 		vim.api.nvim_buf_add_highlight(buffer, ns, hl_group, k - 1, 0, -1)
 	end
 
