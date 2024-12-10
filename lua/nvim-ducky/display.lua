@@ -6,6 +6,7 @@ local ui = require("nvim-ducky.ui")
 
 function display:new(obj)
 	ui.highlight_setup(obj)
+
 	local popup = Popup({
 		enter = true,
 		focusable = true,
