@@ -52,12 +52,14 @@ function display:fill_buffer(buffer, current_node, config)
 		table.insert(lines, text)
 	end
 
-	display:autocmd(buffer)
-
 	-- Write list of symbols to buffer
 	vim.api.nvim_buf_set_option(buffer, "modifiable", true)
 	vim.api.nvim_buf_set_lines(buffer, 0, -1, false, lines)
 	vim.api.nvim_buf_set_option(buffer, "modifiable", false)
+
+	vim.api.nvim_set_option_value("cursorline", true, {
+		buf = buffer,
+	})
 end
 
 function display:autocmd(buffer)
