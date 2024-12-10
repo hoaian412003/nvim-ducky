@@ -140,7 +140,7 @@ local function handler(bufnr, curr_node, lsp_name)
 		end
 	end
 
-	if session.popup ~= nil then
+	if session.popup == nil then
 		session = display:new({
 			for_buf = bufnr,
 			for_win = vim.api.nvim_get_current_win(),
