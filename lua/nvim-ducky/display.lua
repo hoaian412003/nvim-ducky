@@ -33,8 +33,6 @@ function display:new(obj)
 		},
 	})
 
-	obj.popup = popup
-
 	display:fill_buffer(popup.bufnr, obj.focus_node, obj.config)
 
 	popup:mount()
@@ -42,6 +40,7 @@ function display:new(obj)
 		popup:unmount()
 	end)
 
+	obj.popup = popup
 	return obj
 end
 
@@ -65,9 +64,9 @@ function display:fill_buffer(buffer, current_node, config)
 	end
 end
 
-function display:autocmd(buffer)
-	local augroup = vim.api.nvim_create_augroup("Ducky", { clear = false })
-	vim.api.nvim_clear_autocmds({ buffer = buffer })
+function display:refresh(current_node)
+	vim.print("refresh")
+	display:fill_buffer(self.popup.buffer, current_node, self.config)
 end
 
 return display
