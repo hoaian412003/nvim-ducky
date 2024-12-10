@@ -32,7 +32,7 @@ function display:new(obj)
 
 	for k, v in pairs(nodes) do
 		vim.api.nvim_buf_set_lines(popup.bufnr, k - 1, k, false, {
-			obj.icons[v.kind],
+			obj.config.icons[v.kind],
 			v.name,
 		})
 	end
