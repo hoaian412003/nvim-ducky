@@ -51,6 +51,8 @@ function display:fill_buffer(buffer, current_node, config)
 
 	local lines = {}
 	for _, node in ipairs(nodes) do
+		vim.print("Print node" .. node.name)
+
 		local text = " " .. config.icons[node.kind] .. node.name
 		table.insert(lines, text)
 	end
@@ -60,7 +62,7 @@ function display:fill_buffer(buffer, current_node, config)
 	vim.api.nvim_buf_set_lines(buffer, 0, -1, false, lines)
 	vim.api.nvim_buf_set_option(buffer, "modifiable", false)
 
-	for k, node in ipairs(nodes) do
+	for k, node in pairs(nodes) do
 		local hl_group = "Navbuddy" .. navic.adapt_lsp_num_to_str(node.kind)
 		vim.api.nvim_buf_add_highlight(buffer, ns, hl_group, k - 1, 0, -1)
 	end
