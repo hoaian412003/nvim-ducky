@@ -5,7 +5,7 @@ local utils = require("nvim-ducky.utils")
 local ui = require("nvim-ducky.ui")
 
 function display:new(obj)
-	ui.highlight_setup(obj)
+	ui.highlight_setup(obj.config)
 
 	local popup = Popup({
 		enter = true,
@@ -23,6 +23,7 @@ function display:new(obj)
 		},
 		win_options = {
 			winhighlight = "Normal:NavbuddyNormalFloat,FloatBorder:NavbuddyFloatBorder",
+			scrolloff = obj.config.window.scrolloff,
 		},
 		buf_options = {
 			modifiable = false,
