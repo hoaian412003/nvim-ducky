@@ -54,16 +54,15 @@ function display:fill_buffer(buffer, current_node, config)
 		table.insert(lines, text)
 	end
 
-	for k, node in pairs(nodes) do
-		local hl_group = "Navbuddy" .. navic.adapt_lsp_num_to_str(node.kind)
-		vim.print("Highlight: ", hl_group)
-		vim.api.nvim_buf_add_highlight(buffer, ns, hl_group, k - 1, 0, -1)
-	end
-
 	-- Write list of symbols to buffer
 	vim.api.nvim_buf_set_option(buffer, "modifiable", true)
 	vim.api.nvim_buf_set_lines(buffer, 0, -1, false, lines)
 	vim.api.nvim_buf_set_option(buffer, "modifiable", false)
+
+	for k, node in pairs(nodes) do
+		local hl_group = "Navbuddy" .. navic.adapt_lsp_num_to_str(node.kind)
+		vim.api.nvim_buf_add_highlight(buffer, ns, hl_group, k - 1, 0, -1)
+	end
 end
 
 function display:autocmd(buffer)
