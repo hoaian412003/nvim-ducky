@@ -52,16 +52,25 @@ function display:fill_buffer(buffer, current_node, config)
 		table.insert(lines, text)
 	end
 
+	display:autocmd(buffer)
+
 	-- Write list of symbols to buffer
 	vim.api.nvim_buf_set_option(buffer, "modifiable", true)
 	vim.api.nvim_buf_set_lines(buffer, 0, -1, false, lines)
 	vim.api.nvim_buf_set_option(buffer, "modifiable", false)
-
-	display:highlight_current_line(buffer, 1)
 end
 
-function display:highlight_current_line(buffer, line)
-	vim.api.nvim_buf_add_highlight(buffer, ns, "CursorLine", line, 0, -1)
+function display:autocmd(buffer)
+	local augroup = vim.api.nvim_create_augroup("Ducky", { clear = false })
+	vim.api.nvim_clear_autocmds({ buffer = buffer })
+
+	vim.api.nvim_create_autocmd("BufEnter", {
+		group = augroup,
+		buffer = buffer,
+		callback = function()
+			vim.opt.cursorline = true
+		end,
+	})
 end
 
 return display
