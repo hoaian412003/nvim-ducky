@@ -6,22 +6,27 @@ function utils.get_symbols()
 end
 
 function utils.get_node_list(current_node)
-	vim.print("current node is: " .. current_node.name)
 	if current_node == nil then
-		return nil
-	end
-	local result = { current_node }
-	local left = utils.get_node_list(current_node.prev)
-	local right = utils.get_node_list(current_node.next)
-
-	if left ~= nil then
-		result = { unpack(left), unpack(result) }
-	end
-	if right ~= nil then
-		result = { unpack(result), unpack(right) }
+		return {}
 	end
 
-	return result
+	return { unpack(utils.get_node_pre(current_node.prev)), current_node, utils.get_node_next(current_node.next) }
+end
+
+function utils.get_node_pre(current_node)
+	if current_node == nil then
+		return {}
+	end
+	local left = utils.get_node_pre(current_node.prev)
+	return { unpack(left), current_node }
+end
+
+function utils.get_node_next(current_node)
+	if current_node == nil then
+		return {}
+	end
+	local right = utils.get_node_next(current_node.next)
+	return { current_node, unpack(right) }
 end
 
 return utils
