@@ -10,7 +10,10 @@ function display:new(obj)
 		border = {
 			style = "rounded",
 		},
-		position = "100%",
+		position = {
+			col = "100%",
+			row = "0%",
+		},
 		size = {
 			width = "20%",
 			height = "50%",
