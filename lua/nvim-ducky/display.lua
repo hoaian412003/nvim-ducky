@@ -64,7 +64,7 @@ function display:autocmd(buffer)
 	local augroup = vim.api.nvim_create_augroup("Ducky", { clear = false })
 	vim.api.nvim_clear_autocmds({ buffer = buffer })
 
-	vim.api.nvim_create_autocmd("BufNew", {
+	vim.api.nvim_create_autocmd("BufAdd", {
 		group = augroup,
 		buffer = buffer,
 		callback = function()
