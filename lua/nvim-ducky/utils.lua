@@ -15,7 +15,7 @@ function utils.get_node_list(current_node)
 
 	table.merge(utils.get_node_pre(current_node.prev), utils.get_node_next(current_node), result)
 
-	return table
+	return result
 end
 
 function utils.get_node_pre(current_node)
