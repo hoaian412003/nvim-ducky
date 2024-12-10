@@ -6,6 +6,7 @@ function utils.get_symbols()
 end
 
 function utils.get_node_list(current_node)
+	vim.print("current node is: " .. current_node.name)
 	if current_node == nil then
 		return nil
 	end
