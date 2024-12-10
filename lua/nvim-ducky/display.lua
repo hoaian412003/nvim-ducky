@@ -31,10 +31,7 @@ function display:new(obj)
 	local nodes = utils.get_node_list(obj.focus_node)
 
 	for k, v in pairs(nodes) do
-		vim.api.nvim_buf_set_lines(popup.bufnr, k - 1, k, false, {
-			obj.config.icons[v.kind],
-			v.name,
-		})
+		vim.api.nvim_buf_set_lines(popup.bufnr, k - 1, k, false, { obj.config.icons[v.kind] .. v.name })
 	end
 
 	return obj
