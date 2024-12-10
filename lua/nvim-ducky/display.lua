@@ -27,7 +27,7 @@ function display:new(obj)
 	local nodes = utils.get_node_list(obj.focus_node)
 
 	for k, v in pairs(nodes) do
-		vim.api.nvim_buf_set_lines(popup.bufnr, 0, 1, false, { v.name })
+		vim.api.nvim_buf_set_lines(popup.bufnr, k - 1, k, false, { v.name })
 	end
 
 	return obj
