@@ -2,8 +2,10 @@ local display = {}
 local Popup = require("nui.popup")
 local event = require("nui.utils.autocmd").event
 local utils = require("nvim-ducky.utils")
+local ui = require("nvim-ducky.ui")
 
 function display:new(obj)
+	ui.highlight_setup(obj)
 	local popup = Popup({
 		enter = true,
 		focusable = true,
@@ -18,7 +20,12 @@ function display:new(obj)
 			width = "20%",
 			height = "50%",
 		},
-		highlight = "Normal:BufferCurrentINFO",
+		win_options = {
+			winhighlight = "Normal:NavbuddyNormalFloat,FloatBorder:NavbuddyFloatBorder",
+		},
+		buf_options = {
+			modifiable = false,
+		},
 	})
 
 	obj.popup = popup
