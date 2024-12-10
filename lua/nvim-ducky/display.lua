@@ -65,7 +65,6 @@ function display:fill_buffer(buffer, current_node, config)
 end
 
 function display:refresh(current_node)
-	vim.print("refresh")
 	display:fill_buffer(self.popup.bufnr, current_node, self.config)
 	self.focus_node = current_node
 	return self
