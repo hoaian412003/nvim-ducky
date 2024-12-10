@@ -6,6 +6,9 @@ function utils.get_symbols()
 end
 
 function utils.get_node_list(current_node)
+	if current_node == nil then
+		return nil
+	end
 	local result = { current_node }
 	local left = utils.get_node_list(current_node.prev)
 	local right = utils.get_node_list(current_node.next)
