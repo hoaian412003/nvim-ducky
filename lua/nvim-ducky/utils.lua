@@ -11,7 +11,6 @@ function utils.get_node_list(current_node)
 	while current_node ~= nil do
 		result[index] = current_node
 		index = index + 1
-		vim.print("Next node is: ", current_node.next)
 		current_node = current_node.next
 	end
 	return result

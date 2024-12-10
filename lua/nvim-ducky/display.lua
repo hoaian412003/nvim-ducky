@@ -18,7 +18,7 @@ function display:new(obj)
 			width = "20%",
 			height = "50%",
 		},
-		highlight = "BufferCurrentINFO:BufferCurrentINFO",
+		highlight = "Normal:BufferCurrentINFO",
 	})
 
 	obj.popup = popup
@@ -33,6 +33,8 @@ function display:new(obj)
 	for k, v in pairs(nodes) do
 		vim.api.nvim_buf_set_lines(popup.bufnr, k - 1, k, false, { obj.config.icons[v.kind] .. v.name })
 	end
+
+	vim.api.nvim_buf_set_option(popup.bufnr, "winhighlight", "CursorLine:BufferLinePickSelected")
 
 	return obj
 end
