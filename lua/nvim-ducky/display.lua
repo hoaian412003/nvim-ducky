@@ -18,7 +18,7 @@ function display:new(obj)
 			width = "20%",
 			height = "50%",
 		},
-		highlight = "Normal:NotifyBackground",
+		highlight = "BufferCurrentINFO:BufferCurrentINFO",
 	})
 
 	obj.popup = popup
@@ -31,7 +31,10 @@ function display:new(obj)
 	local nodes = utils.get_node_list(obj.focus_node)
 
 	for k, v in pairs(nodes) do
-		vim.api.nvim_buf_set_lines(popup.bufnr, k - 1, k, false, { v.name })
+		vim.api.nvim_buf_set_lines(popup.bufnr, k - 1, k, false, {
+			obj.icons[v.kind],
+			v.name,
+		})
 	end
 
 	return obj
