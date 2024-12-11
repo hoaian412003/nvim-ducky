@@ -63,12 +63,12 @@ end
 function utils.get_title(current_node)
 	local filename = vim.fn.expand("%:t")
 	if current_node == nil then
-		return filename
+		return { text = filename, kind = 1 }
 	end
 	if current_node.parent ~= nil and current_node.parent.name ~= nil then
-		return current_node.parent.name
+		return { text = current_node.parent.name, kind = current_node.kind }
 	else
-		return filename
+		return { text = filename, kind = 1 }
 	end
 end
 

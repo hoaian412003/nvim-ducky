@@ -79,7 +79,8 @@ function display:fill_buffer(popup, current_node, config)
 		width = "20%",
 		height = length,
 	})
-	popup.border:set_text("top", utils.get_title(current_node), "center")
+	local title = utils.get_title(current_node)
+	popup.border:set_text("top", config.icons[title.kind] .. title.text, "center")
 	popup:show()
 end
 
