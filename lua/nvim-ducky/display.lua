@@ -42,10 +42,6 @@ function display:new(obj)
 
 	obj.popup = popup
 	display:fill_buffer(popup, obj.focus_node, obj.config)
-	local function hide_popup()
-		popup:hide()
-	end
-	vim.fn.timer_start(5000, hide_popup)
 	return obj
 end
 
