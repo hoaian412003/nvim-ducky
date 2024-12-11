@@ -30,6 +30,18 @@ function utils.find_next_node(node)
 	end
 end
 
+function utils.find_prev_node(node)
+	if node == nil then
+		return nil
+	end
+
+	if node.prev == nil then
+		return utils.find_prev_node(node.parent)
+	else
+		return node.prev
+	end
+end
+
 function utils.get_node_pre(current_node)
 	if current_node == nil then
 		return {}

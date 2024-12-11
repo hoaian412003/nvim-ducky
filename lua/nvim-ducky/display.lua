@@ -21,7 +21,7 @@ function display:new(obj)
 		},
 		size = {
 			width = "20%",
-			height = "50%",
+			-- height = "50%",
 		},
 		win_options = {
 			winhighlight = "Normal:NavbuddyNormalFloat,FloatBorder:NavbuddyFloatBorder",

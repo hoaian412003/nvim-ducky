@@ -22,4 +22,11 @@ function actions.jump_next()
 	actions.jump_to_node(next)
 end
 
+-- lua require('nvim-ducky.actions').jump_prev()
+function actions.jump_prev()
+	local prev = utils.find_prev_node(session.current_node)
+
+	actions.jump_to_node(prev)
+end
+
 return actions
