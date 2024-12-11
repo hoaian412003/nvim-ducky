@@ -21,7 +21,7 @@ function display:new(obj)
 		},
 		size = {
 			width = "20%",
-			-- height = "50%",
+			height = "50%",
 		},
 		win_options = {
 			winhighlight = "Normal:NavbuddyNormalFloat,FloatBorder:NavbuddyFloatBorder",
@@ -51,9 +51,11 @@ function display:fill_buffer(popup, current_node, config)
 	end
 
 	local lines = {}
+	local length = 0
 	for _, node in ipairs(nodes) do
 		local text = " " .. config.icons[node.kind] .. node.name
 		table.insert(lines, text)
+		length = length + 1
 	end
 
 	-- Write list of symbols to buffer
@@ -69,6 +71,9 @@ function display:fill_buffer(popup, current_node, config)
 			vim.api.nvim_win_set_cursor(win, { k, 0 })
 		end
 	end
+	popup:set_size({
+		height = length,
+	})
 end
 
 function display:refresh(current_node)
