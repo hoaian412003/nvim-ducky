@@ -34,7 +34,7 @@ function display:new(obj)
 		relative = "editor",
 	})
 
-	display:fill_buffer(popup.bufnr, obj.focus_node, obj.config)
+	display:fill_buffer(popup, obj.focus_node, obj.config)
 
 	popup:mount()
 	popup:on(event.BufLeave, function()
@@ -45,8 +45,10 @@ function display:new(obj)
 	return obj
 end
 
-function display:fill_buffer(buffer, current_node, config)
+function display:fill_buffer(popup, current_node, config)
 	local nodes = utils.get_node_list(current_node)
+	local buffer = popup.bufnr
+	local win = popup.winid
 
 	local lines = {}
 	for _, node in ipairs(nodes) do
@@ -63,14 +65,14 @@ function display:fill_buffer(buffer, current_node, config)
 		local hl_group = "Navbuddy" .. navic.adapt_lsp_num_to_str(node.kind)
 		vim.api.nvim_buf_add_highlight(buffer, ns, hl_group, k - 1, 0, -1)
 		if node.index == current_node.index then
-			vim.print("Buffer" .. buffer.winid)
-			-- vim.api.nvim_win_set_cursor(buffer.winid, { k, 0 })
+			vim.print("Buffer" .. win)
+			vim.api.nvim_win_set_cursor(win, { k, 0 })
 		end
 	end
 end
 
 function display:refresh(current_node)
-	display:fill_buffer(self.popup.bufnr, current_node, self.config)
+	display:fill_buffer(self.popup, current_node, self.config)
 	self.focus_node = current_node
 	return self
 end
