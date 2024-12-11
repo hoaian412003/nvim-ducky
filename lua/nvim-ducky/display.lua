@@ -72,7 +72,7 @@ function display:fill_buffer(popup, current_node, config)
 		width = "20%",
 		height = length,
 	})
-	popup.border:set_text("top", current_node.name, "center")
+	popup.border:set_text("top", "Hello world", "center")
 end
 
 function display:refresh(current_node)
