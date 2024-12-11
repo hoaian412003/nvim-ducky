@@ -12,9 +12,6 @@ function display:new(obj)
 	local popup = Popup({
 		enter = false,
 		focusable = true,
-		border = {
-			style = "rounded",
-		},
 		position = {
 			col = "100%",
 			row = "10%",
