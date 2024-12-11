@@ -26,7 +26,7 @@ function utils.find_next_node(node)
 	if node.next == nil then
 		return utils.find_next_node(node.parent)
 	else
-		return node
+		return node.next
 	end
 end
 
