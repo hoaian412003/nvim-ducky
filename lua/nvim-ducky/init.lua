@@ -142,27 +142,27 @@ local function handler(bufnr, curr_node, lsp_name)
 	end
 
 	session.current_node = curr_node
-	if session.display == nil then
-		session.display = display:new({
-			for_buf = bufnr,
-			for_win = vim.api.nvim_get_current_win(),
-			start_cursor = vim.api.nvim_win_get_cursor(vim.api.nvim_get_current_win()),
-			focus_node = curr_node,
-			config = config,
-			lsp_name = lsp_name,
-		})
-
-		vim.api.nvim_create_autocmd("BufLeave", {
-			group = augroup,
-			buffer = session.display.popup.bufnr,
-			callback = function()
-				session = {}
-				vim.api.nvim_clear_autocmds({ group = augroup })
-			end,
-		})
-	else
-		session.display = display.refresh(session.display, curr_node)
-	end
+	-- if session.display == nil then
+	-- 	session.display = display:new({
+	-- 		for_buf = bufnr,
+	-- 		for_win = vim.api.nvim_get_current_win(),
+	-- 		start_cursor = vim.api.nvim_win_get_cursor(vim.api.nvim_get_current_win()),
+	-- 		focus_node = curr_node,
+	-- 		config = config,
+	-- 		lsp_name = lsp_name,
+	-- 	})
+	--
+	-- 	vim.api.nvim_create_autocmd("BufLeave", {
+	-- 		group = augroup,
+	-- 		buffer = session.display.popup.bufnr,
+	-- 		callback = function()
+	-- 			session = {}
+	-- 			vim.api.nvim_clear_autocmds({ group = augroup })
+	-- 		end,
+	-- 	})
+	-- else
+	-- 	session.display = display.refresh(session.display, curr_node)
+	-- end
 end
 
 -- @Public Methods
