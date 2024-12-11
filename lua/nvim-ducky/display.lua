@@ -45,6 +45,9 @@ function display:new(obj)
 end
 
 function display:fill_buffer(popup, current_node, config)
+	if popup == nil then
+		return
+	end
 	local nodes = utils.get_node_list(current_node)
 	local buffer = popup.bufnr
 	local win = popup.winid
