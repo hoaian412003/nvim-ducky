@@ -181,9 +181,9 @@ function M.open(bufnr)
 		end,
 	})
 
-	vim.api.nvim_create_autocmd("BufLeave", {
+	vim.api.nvim_create_autocmd("BufDelete", {
 		group = augroup,
-		buffer = bufnr,
+		buffer = session.display.popup.bufnr,
 		callback = function()
 			session = {}
 		end,
