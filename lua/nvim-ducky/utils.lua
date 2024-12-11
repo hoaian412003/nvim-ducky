@@ -65,7 +65,7 @@ function utils.get_title(current_node)
 	if current_node == nil then
 		return filename
 	end
-	if current_node.parent then
+	if current_node.parent ~= nil and current_node.parent.name ~= nil then
 		return current_node.parent.name
 	else
 		return filename
