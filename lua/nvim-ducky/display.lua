@@ -72,6 +72,7 @@ function display:fill_buffer(popup, current_node, config)
 		end
 	end
 	popup:set_size({
+		width = "50%",
 		height = length,
 	})
 end
