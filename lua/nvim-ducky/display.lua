@@ -84,6 +84,7 @@ function display:fill_buffer(popup, current_node, config)
 		height = length,
 	})
 	popup.border:set_text("top", utils.get_title(current_node), "center")
+	popup:show()
 end
 
 function display:refresh(current_node)
