@@ -35,9 +35,9 @@ function display:new(obj)
 	})
 
 	popup:mount()
-	popup:on(event.BufLeave, function()
-		popup:unmount()
-	end)
+	-- popup:on(event.BufLeave, function()
+	-- 	popup:unmount()
+	-- end)
 
 	obj.popup = popup
 	display:fill_buffer(popup, obj.focus_node, obj.config)
