@@ -17,7 +17,7 @@ function display:new(obj)
 		},
 		position = {
 			col = "100%",
-			row = "0%",
+			row = "10%",
 		},
 		size = {
 			width = "20%",
