@@ -151,7 +151,7 @@ local function handler(bufnr, curr_node, lsp_name)
 			lsp_name = lsp_name,
 		})
 
-		vim.api.nvim_create_autocmd("BufDelete", {
+		vim.api.nvim_create_autocmd("BufLeave", {
 			group = augroup,
 			buffer = session.display.popup.bufnr,
 			callback = function()
