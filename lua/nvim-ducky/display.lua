@@ -16,6 +16,13 @@ function display:new(obj)
 			col = "100%",
 			row = "10%",
 		},
+		border = {
+			style = "rounded",
+			text = {
+				top = "Hello world",
+				top_align = "center",
+			},
+		},
 		size = {
 			width = "20%",
 			height = "50%",
