@@ -156,7 +156,7 @@ local function handler(bufnr, curr_node, lsp_name)
 			buffer = session.display.popup.bufnr,
 			callback = function()
 				session = {}
-				vim.api.nvim_clear_autocmds({ augroup = augroup })
+				vim.api.nvim_clear_autocmds({ group = augroup })
 			end,
 		})
 	else
