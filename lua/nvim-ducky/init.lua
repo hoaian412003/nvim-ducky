@@ -2,6 +2,7 @@ local navic = require("nvim-navic.lib")
 
 local display = require("nvim-ducky.display")
 local session = {}
+local augroup = vim.api.nvim_create_augroup("ducky-controller", {})
 
 local config = {
 	window = {
@@ -149,6 +150,14 @@ local function handler(bufnr, curr_node, lsp_name)
 			config = config,
 			lsp_name = lsp_name,
 		})
+
+		vim.api.nvim_create_autocmd("BufDelete", {
+			group = augroup,
+			buffer = session.display.popup.bufnr,
+			callback = function()
+				session = {}
+			end,
+		})
 	else
 		session.display = display.refresh(session.display, curr_node)
 	end
@@ -164,7 +173,6 @@ function M.open(bufnr)
 	bufnr = bufnr or vim.api.nvim_get_current_buf()
 	request(bufnr, handler)
 
-	local augroup = vim.api.nvim_create_augroup("ducky-controller", {})
 	vim.api.nvim_create_autocmd("CursorMoved", {
 		group = augroup,
 		-- buffer = bufnr,
@@ -178,14 +186,6 @@ function M.open(bufnr)
 		-- buffer = bufnr,
 		callback = function()
 			request(bufnr, handler)
-		end,
-	})
-
-	vim.api.nvim_create_autocmd("BufDelete", {
-		group = augroup,
-		buffer = session.display.popup.bufnr,
-		callback = function()
-			session = {}
 		end,
 	})
 end
