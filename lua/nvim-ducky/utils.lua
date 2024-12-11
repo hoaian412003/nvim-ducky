@@ -61,13 +61,14 @@ function utils.get_node_next(current_node)
 end
 
 function utils.get_title(current_node)
+	local filename = vim.fn.expand("%:t")
 	if current_node == nil then
-		return vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
+		return filename
 	end
 	if current_node.parent then
 		return current_node.parent.name
 	else
-		return vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
+		return filename
 	end
 end
 
