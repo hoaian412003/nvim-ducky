@@ -140,8 +140,8 @@ local function handler(bufnr, curr_node, lsp_name)
 		end
 	end
 
-	if session.popup == nil then
-		session = display:new({
+	if session.display == nil then
+		session.display = display:new({
 			for_buf = bufnr,
 			for_win = vim.api.nvim_get_current_win(),
 			start_cursor = vim.api.nvim_win_get_cursor(vim.api.nvim_get_current_win()),
@@ -150,8 +150,10 @@ local function handler(bufnr, curr_node, lsp_name)
 			lsp_name = lsp_name,
 		})
 	else
-		session = display.refresh(session, curr_node)
+		session.display = display.refresh(session, curr_node)
 	end
+
+	session.current_node = curr_node
 end
 
 -- @Public Methods
@@ -328,5 +330,7 @@ function M.setup(user_config)
 		end
 	end
 end
+
+M.session = session
 
 return M
