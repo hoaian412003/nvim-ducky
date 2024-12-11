@@ -65,7 +65,8 @@ function display:fill_buffer(popup, current_node, config)
 		local hl_group = "Navbuddy" .. navic.adapt_lsp_num_to_str(node.kind)
 		vim.api.nvim_buf_add_highlight(buffer, ns, hl_group, k - 1, 0, -1)
 		if node.index == current_node.index then
-			vim.api.nvim_win_set_cursor(win, { k, 0 })
+			vim.print(win)
+			-- vim.api.nvim_win_set_cursor(win, { k, 0 })
 		end
 	end
 end
