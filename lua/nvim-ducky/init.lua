@@ -141,6 +141,7 @@ local function handler(bufnr, curr_node, lsp_name)
 		end
 	end
 
+	session.current_node = curr_node
 	if session.display == nil then
 		session.display = display:new({
 			for_buf = bufnr,
@@ -162,8 +163,6 @@ local function handler(bufnr, curr_node, lsp_name)
 	else
 		session.display = display.refresh(session.display, curr_node)
 	end
-
-	session.current_node = curr_node
 end
 
 -- @Public Methods

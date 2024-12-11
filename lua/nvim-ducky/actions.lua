@@ -29,4 +29,10 @@ function actions.jump_prev()
 	actions.jump_to_node(prev)
 end
 
+function actions.hide()
+	if session.display ~= nil then
+		session.display.popup:hide()
+	end
+end
+
 return actions
