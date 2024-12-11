@@ -180,6 +180,14 @@ function M.open(bufnr)
 			request(bufnr, handler)
 		end,
 	})
+
+	vim.api.nvim_create_autocmd("BufDelete", {
+		group = augroup,
+		buffer = bufnr,
+		callback = function()
+			session = {}
+		end,
+	})
 end
 
 function M.attach(client, bufnr)
