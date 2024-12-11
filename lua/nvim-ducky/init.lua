@@ -167,7 +167,7 @@ function M.open(bufnr)
 	local augroup = vim.api.nvim_create_augroup("ducky-controller", {})
 	vim.api.nvim_create_autocmd("CursorMoved", {
 		group = augroup,
-		buffer = bufnr,
+		-- buffer = bufnr,
 		callback = function()
 			request(bufnr, handler)
 		end,
