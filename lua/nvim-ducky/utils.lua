@@ -60,6 +60,15 @@ function utils.get_node_next(current_node)
 	return right
 end
 
+function utils.get_title(current_node)
+	if current_node == nil then
+		return ""
+	end
+	if current_node.parent then
+		return current_node.parent.name
+	end
+end
+
 function table.merge(table1, table2, result)
 	for _, v in ipairs(table1) do
 		table.insert(result, v)
