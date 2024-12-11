@@ -62,7 +62,7 @@ end
 
 function utils.get_title(current_node)
 	if current_node == nil then
-		return ""
+		return vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
 	end
 	if current_node.parent then
 		return current_node.parent.name
