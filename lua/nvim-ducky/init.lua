@@ -150,7 +150,7 @@ local function handler(bufnr, curr_node, lsp_name)
 			lsp_name = lsp_name,
 		})
 	else
-		session.display = display.refresh(session, curr_node)
+		session.display = display.refresh(session.display, curr_node)
 	end
 
 	session.current_node = curr_node
