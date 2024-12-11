@@ -37,6 +37,7 @@ function display:new(obj)
 	popup:mount()
 	popup:on(event.BufLeave, function()
 		popup:unmount()
+		obj = nil
 	end)
 
 	obj.popup = popup
