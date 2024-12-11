@@ -18,6 +18,18 @@ function utils.get_node_list(current_node)
 	return result
 end
 
+function utils.find_next_node(node)
+	if node == nil then
+		return nil
+	end
+
+	if node.next == nil then
+		return utils.find_next_node(node.parent)
+	else
+		return node
+	end
+end
+
 function utils.get_node_pre(current_node)
 	if current_node == nil then
 		return {}
